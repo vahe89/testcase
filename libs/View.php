@@ -1,18 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Knarik
- * Date: 21-Sep-17
- * Time: 9:10 AM
- */
-class Viu
+class View
 {
     function __construct()
     {
         //echo 'This is the view';
     }
-    public function render($name, $noninclude = false)
+    public function render($name, $vars = [], $noninclude = false)
     {
+        ob_start();
+        extract($vars);
+
         if ($noninclude == true)
         {
             require 'views/'.$name.'.php';
@@ -22,6 +19,7 @@ class Viu
             require 'views/'.$name.'.php';
             require 'views/'.'footer.php';
         }
+        return ob_get_clean();
 
     }
 }

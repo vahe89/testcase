@@ -7,19 +7,18 @@ class Dashboard extends Controller
         parent::__construct();
         Session::init();
         $logged = Session::get('loggedIn');
-        if ($logged == false)
+        if ($logged == false && 1==0)
         {
             Session::destroy();
             header('location: '.URL.'login');
             exit;
         }
-
-        $this->vew->js1 = array('views'.DS.'dashboard'.DS.'js'.DS.'default.js');
-        $this->vew->js = array('views'.DS.'dashboard'.DS.'js'.DS.'default.js');
     }
     function index()
     {
-        $this->vew->render('dashboard'.DS.'index');
+        $model = new Operators_model();
+        $operators_list = $model->findAll();
+        $this->view->render('dashboard'.DS.'index',['operators_list'=>$operators_list]);
     }
     function logout()
     {
@@ -27,17 +26,6 @@ class Dashboard extends Controller
         header('location: '.URL.'login');
         exit;
     }
-
-    function xhrInsert()
-    {
-        $this->model->xhrInsert();
-    }
-
-    function xhrGetListings()
-    {
-        $this->model->xhrGetListings();
-    }
-
 
 
 }
