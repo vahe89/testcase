@@ -14,7 +14,6 @@ class View
         {
             require 'views/'.$name.'.php';
         }else{
-
             require 'views/'.'header.php';
             //require 'views'.substr($name,0,-1).'.php';
             require 'views/'.$name.'.php';
