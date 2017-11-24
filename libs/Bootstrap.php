@@ -11,16 +11,20 @@ class Bootstrap
 
         if (empty($url[0]))
         {
-
-            $controller = new Index();
+         //   var_dump('a');die;
+            $controller = new Dashboard();
             $controller->index();
             die();
+        }else{
+
+            $control = ucfirst($url[0]);
+
+            $controller = new  $control;
+
+            $controller->loadModel($url[0]);
         }
 
-        $control = ucfirst($url[0]);
-        $controller = new  $control;
 
-        $controller->loadModel($url[0]);
         if (isset($url[2]))
         {
             if (method_exists($controller,$url[1]))
