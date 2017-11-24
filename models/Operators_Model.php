@@ -12,7 +12,7 @@ class Operators_Model extends Model
         try {
             $sth = $this->db->prepare("SELECT * FROM operators");
             $sth->execute();
-            $data = $sth->fetchAll();
+            $data = $sth->fetchAll(PDO::FETCH_CLASS);
         } catch (PDOException $e) {
             die($e->getMessage());
         }

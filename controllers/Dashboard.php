@@ -17,7 +17,7 @@ class Dashboard extends Controller
     function index()
     {
         $model = new Operators_model();
-        $operators_list = $model->findAll();
+        $operators_list = json_encode($model->findAll(), true);
         $this->view->render('dashboard/index',['operators_list'=>$operators_list]);
     }
     function logout()
