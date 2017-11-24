@@ -18,7 +18,7 @@ class Dashboard extends Controller
     {
         $model = new Operators_model();
         $operators_list = $model->findAll();
-        $this->view->render('dashboard'.DS.'index',['operators_list'=>$operators_list]);
+        $this->view->render('dashboard/index',['operators_list'=>$operators_list]);
     }
     function logout()
     {
