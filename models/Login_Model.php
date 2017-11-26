@@ -7,42 +7,40 @@ class Login_Model extends Model
         parent::__construct();
 
     }
-    public function run()
+    public function login($username,$password)
     {
         Session::init();
         $errors = array();
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        if (isset($_POST["username"]) && isset($_POST["password"]))
-        {
+
             try {
-                $sth = $this->db->prepare("SELECT * FROM users WHERE `username` = :username AND `password` = :password ");
-                $sth->execute(array(':username' => $username,
-                    ':password' => $password
-                ));
+                $sth = $this->db->prepare("SELECT * FROM users WHERE `username` = :username");
+                $sth->execute(array(':username' => $username));
 
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
 
-            $count = $sth->rowCount();
+           $data = $sth->fetch();
+            if (!empty($data)) {
 
-            if ($count > 0) {
-                $data = $sth->fetch();
-                Session::set('user_id', $data['id']);
-                Session::set('username', $username);
-                Session::set('loggedIn', true);
-                if (isset($_POST["remember"]))
-                {
+                if(password_verify ($password,$data['password'])){
+                    Session::set('user_id', $data['id']);
+                    Session::set('username', $data['username']);
+                    Session::set('loggedIn', true);
+
                     setcookie("id", $data['id'],time()+60*60*7);
                     setcookie("username", $username,time()+60*60*7);
+                    return array('success'=>true,'message'=>'');
+                }else{
+                    return array('success'=>false,'message'=>'Password is not correct!');
                 }
-                header('location: ' . URL . 'dashboard');
+
+
             } else {
-                array_push($errors, "Wrong username/password combination");
-                header('location: ' . URL . 'login');
+                return array('success'=>false,'message'=>'Username not found!');
+
             }
-        }
+
         $_SESSION['errors'] = $errors;
     }
 

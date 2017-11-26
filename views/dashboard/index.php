@@ -1,35 +1,73 @@
 <?php
 //echo"<pre>";print_r($operators_list);die;
 ?>
-<script>
-  var operators_list = <?php echo $operators_list; ?>;
-</script>
+
 
 <section class="hbox stretch">
     <section class="vbox">
-        <section class="scrollable padder">
-            <div class="m-b-md">
-                <h3 class="m-b-none">Operators list</h3>
+
+        <ul class="nav nav-tabs">
+
+            <li class="active"><a data-toggle="tab" href="#menu1">Operators List</a></li>
+            <li><a data-toggle="tab" href="#menu2">Call logs List</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="menu1" class="tab-pane fade in active">
+                <section class="scrollable padder">
+                    <div class="m-b-md">
+                        <h3 class="m-b-none">Operators list</h3>
+                    </div>
+                    <section class="panel panel-default">
+                        <div class="table-responsive">
+                            <table id="example" class="table table-striped m-b-none" data-ride="datatables">
+                                <thead>
+                                <tr>
+                                    <th >Id</th>
+                                    <th >Name</th>
+                                    <th >Phone number</th>
+                                    <th >Last call time</th>
+                                    <th>Calls Count /  6h</th>
+                                    <th >Calls Count / 24h</th>
+                                    <th>Calls Count / 48h</th>
+                                    <th >Last Call Time</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
             </div>
-            <section class="panel panel-default">
-                <div class="table-responsive">
-                    <table id="example" class="table table-striped m-b-none" data-ride="datatables">
-                        <thead>
-                        <tr>
-                            <th width="5%">Id</th>
-                            <th width="12%">Name</th>
-                            <th width="12%">Phone number</th>
-                            <th width="12%">Last call time</th>
-                            <th width="15%">Count of calls for 6 hours</th>
-                            <th width="15%">Count of calls for 24 hours</th>
-                            <th width="15%">Count of calls for 48 hours</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </section>
+            <div id="menu2" class="tab-pane fade">
+                <section class="scrollable padder">
+                    <div class="m-b-md">
+                        <h3 class="m-b-none">Call Logs list</h3>
+                    </div>
+                    <section class="panel panel-default">
+                        <div class="table-responsive">
+                            <table id="example_2" class="table table-striped m-b-none" data-ride="datatables">
+                                <thead>
+                                <tr>
+                                    <th >Id</th>
+                                    <th >Operator</th>
+                                    <th >Inbound Number</th>
+                                    <th >Outbound Number</th>
+                                    <th >Duration</th>
+                                    <th>Call Time</th>
+
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+                </section>
+            </div>
+        </div>
+
 </section>
 <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen" data-target="#nav"></a>

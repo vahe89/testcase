@@ -1,0 +1,30 @@
+-- create virtual host ex. testcase.local
+-- ADD DB configuration in config/database.php
+--login credentials
+   -username : vahe89
+   - password: 123456789
+
+ PHP stable version: php 5.6
+ error notice,warnings no need to close
+
+ Ringcentral API endpoint http://virtual host/ringCentral
+
+Additional changes:
+Logout link working:
+Made MVC strcutre
+
+
+Notes:
+  Click on any row in operators list table and will appear modl with update form
+  on RingCentral api  call we may have improvements , as logic is not good in my opinion,
+  I guess no need store calls count in operators list, instead of it we can calculate it with php
+
+
+
+
+
+
+
+
+
+

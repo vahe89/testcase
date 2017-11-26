@@ -28,7 +28,7 @@ class CallRingCentral
         $calls_log_data_json = $this->Call($method,$url,false);
 
         $calls_log_data_obj = json_decode($calls_log_data_json);
-        echo"<pre>";print_r($calls_log_data_obj);die;
+        return $calls_log_data_obj;
     }
 
     private function call($method, $url, $data = false, $autorized = true)
