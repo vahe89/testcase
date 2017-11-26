@@ -1,5 +1,7 @@
 -- create virtual host ex. testcase.local
 -- ADD DB configuration in config/database.php
+
+-- IMPORTANT vribale in config/paths.php - define your virtual host  - base_url var
 --login credentials
    -username : vahe89
    - password: 123456789
